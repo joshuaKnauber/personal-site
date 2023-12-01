@@ -1,8 +1,7 @@
-import { PointMaterial, useGLTF } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import React from "react";
 import * as THREE from "three";
 import { GLTF } from "three-stdlib";
-import { Geometry } from "three/examples/jsm/deprecated/Geometry.js";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -26,7 +25,6 @@ export function Landscape(props: JSX.IntrinsicElements["group"]) {
           roughness={0.5}
           transparent
           opacity={0.5}
-          //   opacity={1}
           envMapIntensity={0.3}
         />
       </mesh>
