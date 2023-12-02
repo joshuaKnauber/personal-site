@@ -18,7 +18,7 @@ html {
     height: 100%;
 }
 .overlay {
-    background: radial-gradient(circle at top center, rgba(24, 24, 82, 0.15) 0%, black 100%);
+    background: radial-gradient(ellipse at top center, rgba(172, 114, 112, 0.05) 0%, black 100%);
     mix-blend-mode: screen;
 }
 .vignette {

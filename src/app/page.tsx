@@ -16,7 +16,7 @@ export default function Home() {
       </button>
       <div
         className={`transition-all relative overflow-hidden ${
-          hover ? "w-[500px] h-[500px]" : "w-full h-full"
+          hover ? "w-[500px] h-[500px] max-w-full" : "w-full h-full"
         }`}
       >
         <Scene />

@@ -14,7 +14,18 @@ export function Landscape(props: JSX.IntrinsicElements["group"]) {
   const { nodes } = useGLTF("/meshes/landscape.glb") as GLTFResult;
   const geometry = nodes.Plane003.geometry;
 
-  const edges = new THREE.EdgesGeometry(geometry);
+  const edges = new THREE.EdgesGeometry(geometry, 0);
+  const mesh = new THREE.Mesh(geometry);
+  const vertexPositions: [number, number, number][] = [];
+  mesh.traverse((child) => {
+    if (child instanceof THREE.Mesh) {
+      const vertices = child.geometry.attributes.position.array;
+      for (let i = 0; i < vertices.length; i += 3) {
+        vertexPositions.push([vertices[i], vertices[i + 1], vertices[i + 2]]);
+      }
+    }
+  });
+  console.log(vertexPositions);
 
   return (
     <group {...props} dispose={null} position={[1, -0.7, 4]}>
@@ -29,17 +40,23 @@ export function Landscape(props: JSX.IntrinsicElements["group"]) {
         />
       </mesh>
       <lineSegments geometry={edges}>
-        <lineDashedMaterial color="white" transparent opacity={0.1} />
+        <lineDashedMaterial color="white" transparent opacity={0.15} />
       </lineSegments>
-      <points args={[geometry]}>
+      {/* {vertexPositions.map((position, i) => (
+        <instancedMesh key={i} position={position}>
+          <sphereGeometry args={[0.03, 8, 8]} />
+          <meshBasicMaterial color={"white"} />
+        </instancedMesh>
+      ))} */}
+      {/* <points args={[geometry]}>
         <pointsMaterial
-          size={0.05}
+          size={0.1}
           color="gray"
           transparent
           opacity={0.1}
           sizeAttenuation={true}
         />
-      </points>
+      </points> */}
     </group>
   );
 }

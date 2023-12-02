@@ -16,11 +16,18 @@ export function Flag({ position }: Props) {
   const bannerRiseDuration = 250;
   const riseOffsetDuration = 200;
 
-  const { scaleLine } = useSpring({
-    scaleLine: hover ? 1 : 0,
-    delay: hover ? 0 : riseOffsetDuration,
+  const { scaleLine1 } = useSpring({
+    scaleLine1: hover ? 1 : 0,
+    delay: hover ? 0 : 150,
     config: {
-      duration: bannerRiseDuration,
+      duration: 80,
+    },
+  });
+  const { scaleLine2 } = useSpring({
+    scaleLine2: hover ? 1 : 0,
+    delay: hover ? 80 : 0,
+    config: {
+      duration: 150,
     },
   });
 
@@ -50,7 +57,7 @@ export function Flag({ position }: Props) {
         />
       </mesh>
       <animated.mesh scale={scaleDot} position={position}>
-        <sphereGeometry args={[0.1, 8, 8]} />
+        <sphereGeometry args={[0.07, 16, 16]} />
         <animated.meshStandardMaterial
           emissive={"white"}
           opacity={opacityDot}
@@ -66,20 +73,31 @@ export function Flag({ position }: Props) {
           color={"white"}
           lineWidth={1}
         ></Line> */}
-        <animated.group scale={scaleLine} position={[0, 0.2, 0]}>
+        <animated.group scale={scaleLine1} position={[0.1, 0.25, 0]}>
           <Line
             points={[
               [0, 0, 0],
-              [0, 1, 0],
+              [0.35, 0.4, 0],
             ]}
             color={"white"}
-            lineWidth={1}
+            lineWidth={2}
           ></Line>
         </animated.group>
-        <Html position={[0, 1.2, 0]} distanceFactor={10}>
+        <animated.group scale={scaleLine2} position={[0.45, 0.65, 0]}>
+          <Line
+            points={[
+              [0, 0, 0],
+              [0, 1.4, 0],
+            ]}
+            color={"white"}
+            lineWidth={2}
+          ></Line>
+        </animated.group>
+        <Html position={[0.5, 2.05, 0]} distanceFactor={10}>
           <animatedHtml.div className={"overflow-hidden"} style={bannerWidth}>
-            <div className="ring-inset ring-1 ring-white px-4 py-2 ml-2">
-              <span className="font-light">testing</span>
+            <div className="bg-gradient-to-r from-white/30 to-transparent px-4 pr-8 py-3 ml-2">
+              {/* <div className="ring-inset ring-white ring-2 px-4 py-3 ml-2"> */}
+              <span className="font-medium">testing</span>
             </div>
           </animatedHtml.div>
         </Html>
