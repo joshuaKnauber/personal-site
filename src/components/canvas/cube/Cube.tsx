@@ -1,7 +1,7 @@
 "use client";
 
 import { Canvas } from "@/components/canvas/Canvas";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import styles from "./cube.module.css";
 
 type Props = {
@@ -28,7 +28,7 @@ export function Cube({ side }: Props) {
   ];
   const transform = `rotateX(${rotations[actualSide].x}deg) rotateY(${rotations[actualSide].y}deg) rotateZ(${rotations[actualSide].z}deg)`;
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const onResize = () => {
       if (!containerRef.current) return;
       setMaxSize(
@@ -39,6 +39,8 @@ export function Cube({ side }: Props) {
         ]),
       );
     };
+
+    onResize();
 
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
