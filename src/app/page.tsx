@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <main className="h-[100dvh]">
-      <div className="md:p-20 p-8 w-full h-full">
+      <div className="md:p-20 overflow-hidden p-12 w-full h-full">
         <Cube side={side} />
       </div>
       <div className="flex flex-row items-center gap-4 z-20 fixed top-4 right-4">

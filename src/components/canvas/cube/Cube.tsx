@@ -56,16 +56,25 @@ export function Cube({ side }: Props) {
         style={{ maxWidth: maxSize, maxHeight: maxSize }}
       >
         <div
-          className={`${styles.cube} w-full relative h-full transition-transform duration-500`}
+          className={`${
+            styles.cube
+          } w-full relative h-full transition-transform duration-500 ${
+            actualSide === 0 ? "" : "delay-500"
+          }`}
           style={{
             transform: transform,
           }}
         >
           <div
             // Front
+            className="relative"
             style={{ transform: `rotateY(0deg) translateZ(${maxSize / 2}px)` }}
           >
-            <div className="md:p-8 p-6 relative overflow-hidden w-full h-full bg-black">
+            <div
+              className={`${styles.screen} ${
+                actualSide === 0 ? `${styles.full} delay-500` : ""
+              } transition-all duration-200 md:p-8 p-6 relative w-full h-full bg-black`}
+            >
               <Canvas />
             </div>
           </div>

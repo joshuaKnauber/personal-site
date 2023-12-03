@@ -6,7 +6,7 @@
 
 .cubeWrapper {
     transform-style: preserve-3d;
-    animation: wobble 20s ease-in-out infinite;
+    /* animation: wobble 20s ease-in-out infinite; */
 }
 
 .cube {
@@ -23,6 +23,13 @@
     background-color: theme("colors.black");
     background: radial-gradient(circle at center, black 50%, rgb(10,10,10) 100%);
     border: 1px solid rgba(255,255,255,0.05);
+}
+
+.screen {
+    clip-path: inset(5% 5% 5% 5%);
+}
+.full {
+    clip-path: inset(-100% -100% -100% -100%);
 }
 
 @keyframes wobble {
