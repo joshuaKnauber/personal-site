@@ -28,7 +28,7 @@ export function Cube({ side }: Props) {
   ];
   const transform = `rotateX(${rotations[actualSide].x}deg) rotateY(${rotations[actualSide].y}deg) rotateZ(${rotations[actualSide].z}deg)`;
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const onResize = () => {
       if (!containerRef.current) return;
       setMaxSize(
