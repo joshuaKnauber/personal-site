@@ -5,9 +5,10 @@ import { useState } from "react";
 
 type Props = {
   position: [number, number, number];
+  onClick?: () => void;
 };
 
-export function Flag({ position }: Props) {
+export function Flag({ position, onClick }: Props) {
   const [hover, setHover] = useState(false);
 
   const { scaleDot } = useSpring({ scaleDot: hover ? 1.5 : 1 });
@@ -42,11 +43,11 @@ export function Flag({ position }: Props) {
   });
 
   return (
-    <group>
+    <group onClick={onClick}>
       <mesh
         position={position}
-        onPointerEnter={() => setHover(true)}
-        onPointerLeave={() => setHover(false)}
+        // onPointerEnter={() => setHover(true)}
+        // onPointerLeave={() => setHover(false)}
       >
         <sphereGeometry args={[0.5, 8, 8]} />
         <meshStandardMaterial

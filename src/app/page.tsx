@@ -1,26 +1,37 @@
 "use client";
 
-import { Scene } from "@/components/scene/Scene";
+import { Canvas } from "@/components/canvas/Canvas";
+import { Cube } from "@/components/canvas/cube/Cube";
 import { useState } from "react";
 
 export default function Home() {
-  const [hover, setHover] = useState(false);
+  const [side, setSide] = useState<number>(0);
 
   return (
     <main className="h-[100dvh]">
-      <button
-        onClick={() => setHover((c) => !c)}
-        className="fixed z-20 top-4 right-4"
-      >
-        test
-      </button>
-      <div
+      <div className="relative p-20 flex w-full h-full">
+        <div className="grow">
+          <Cube side={side} />
+        </div>
+      </div>
+      <div className="flex flex-row items-center gap-4 z-20 fixed top-4 right-4">
+        <button onClick={() => setSide(0)} className="">
+          home
+        </button>
+        <button onClick={() => setSide(1)} className="">
+          cv
+        </button>
+        <button onClick={() => setSide(2)} className="">
+          contact
+        </button>
+      </div>
+      {/* <div
         className={`transition-all relative overflow-hidden ${
-          hover ? "w-[500px] h-[500px] max-w-full" : "w-full h-full"
+          hover ? "w-1/2 h-full max-w-full" : "w-full h-full"
         }`}
       >
-        <Scene />
-      </div>
+        <Canvas />
+      </div> */}
     </main>
   );
 }

@@ -11,7 +11,7 @@ type GLTFResult = GLTF & {
 };
 
 export function Landscape(props: JSX.IntrinsicElements["group"]) {
-  const { nodes } = useGLTF("/meshes/landscape.glb") as GLTFResult;
+  const { nodes } = useGLTF("./meshes/landscape.glb") as GLTFResult;
   const geometry = nodes.Plane003.geometry;
 
   const edges = new THREE.EdgesGeometry(geometry, 0);
@@ -25,7 +25,6 @@ export function Landscape(props: JSX.IntrinsicElements["group"]) {
       }
     }
   });
-  console.log(vertexPositions);
 
   return (
     <group {...props} dispose={null} position={[1, -0.7, 4]}>
@@ -37,6 +36,7 @@ export function Landscape(props: JSX.IntrinsicElements["group"]) {
           transparent
           opacity={0.5}
           envMapIntensity={0.3}
+          blendAlpha={THREE.NoBlending}
         />
       </mesh>
       <lineSegments geometry={edges}>
@@ -48,15 +48,15 @@ export function Landscape(props: JSX.IntrinsicElements["group"]) {
           <meshBasicMaterial color={"white"} />
         </instancedMesh>
       ))} */}
-      {/* <points args={[geometry]}>
+      <points args={[geometry]}>
         <pointsMaterial
           size={0.1}
-          color="gray"
+          color="white"
           transparent
-          opacity={0.1}
+          opacity={0.025}
           sizeAttenuation={true}
         />
-      </points> */}
+      </points>
     </group>
   );
 }
