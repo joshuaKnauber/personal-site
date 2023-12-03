@@ -9,10 +9,8 @@ export default function Home() {
 
   return (
     <main className="h-[100dvh]">
-      <div className="relative p-20 flex w-full h-full">
-        <div className="grow">
-          <Cube side={side} />
-        </div>
+      <div className="p-20 w-full h-full">
+        <Cube side={side} />
       </div>
       <div className="flex flex-row items-center gap-4 z-20 fixed top-4 right-4">
         <button onClick={() => setSide(0)} className="">

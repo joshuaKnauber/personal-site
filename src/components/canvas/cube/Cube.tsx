@@ -49,10 +49,10 @@ export function Cube({ side }: Props) {
   return (
     <div
       ref={containerRef}
-      className={`${styles.container} max-h-full m-auto max-w-full aspect-square flex items-center justify-center`}
+      className={`${styles.container} w-full h-full flex justify-center items-center`}
     >
       <div
-        className={`${styles.cubeWrapper} w-full h-full`}
+        className={`${styles.cubeWrapper} w-full h-full aspect-square relative`}
         style={{ maxWidth: maxSize, maxHeight: maxSize }}
       >
         <div
