@@ -65,7 +65,9 @@ export function Cube({ side }: Props) {
             // Front
             style={{ transform: `rotateY(0deg) translateZ(${maxSize / 2}px)` }}
           >
-            <span>Scene</span>
+            <div className="p-8 relative overflow-hidden w-full h-full bg-black">
+              <Canvas />
+            </div>
           </div>
           <div
             // Back
