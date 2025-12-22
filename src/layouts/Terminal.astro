@@ -1,0 +1,30 @@
+<div class="flex flex-col mx-auto w-full max-w-2xl md:py-20 py-12 px-8 gap-12">
+	<div class="flex flex-col gap-4">
+		<h1 class="">Joshua Knauber</h1>
+
+		<div class="flex flex-col gap-1">
+			<a class="cursor-default [&.current-link]:text-amber-400 text-white/30 hover:text-white/50" href="/">▣ [0] Current</a>
+			<a class="cursor-default [&.current-link]:text-amber-400 text-white/30 hover:text-white/50" href="/blog">◻ [1] Blog</a>
+		</div>
+
+	</div>
+	
+	<slot />
+</div>
+
+<script>
+
+	// page navigation
+	window.addEventListener('keydown', (e) => {
+		if (e.key === '0') {
+			window.location.href = '/';
+		} else if (e.key === '1') {
+			window.location.href = '/blog';
+		}
+	})
+
+	// add class to current link
+    const currentLinks = document.querySelectorAll('a[href="'+document.location.pathname+'"]')
+    currentLinks.forEach(link => link.className += ' current-link');
+
+</script>
