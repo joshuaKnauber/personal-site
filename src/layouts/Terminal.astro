@@ -3,8 +3,12 @@
 		<h1 class="">Joshua Knauber</h1>
 
 		<div class="flex flex-col gap-1">
-			<a class="cursor-default [&.current-link]:text-amber-400 text-white/30 hover:text-white/50" href="/">▣ <span class="hidden md:inline">[0] </span>Current</a>
-			<a class="cursor-default [&.current-link]:text-amber-400 text-white/30 hover:text-white/50" href="/blog">◻ <span class="hidden md:inline">[1] </span>Blog</a>
+			<a class="cursor-default w-fit [&.current-link]:text-amber-400 before:content-['◻'] [&.current-link]:before:content-['▣'] text-white/30 hover:text-white/50" href="/">
+				<span class="hidden md:inline">[0] </span>Current
+			</a>
+			<a class="cursor-default w-fit [&.current-link]:text-amber-400 before:content-['◻'] [&.current-link]:before:content-['▣'] text-white/30 hover:text-white/50" href="/blog">
+				<span class="hidden md:inline">[1] </span>Blog
+			</a>
 		</div>
 
 	</div>
