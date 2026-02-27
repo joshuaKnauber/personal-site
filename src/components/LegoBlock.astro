@@ -1,0 +1,55 @@
+---
+export type LegoWidth = 1 | 2 | 4 | 6;
+
+export type LegoColor = "yellow" | "red" | "blue" | "white";
+
+interface Props {
+  width: LegoWidth;
+  color: LegoColor;
+}
+
+const { width, color } = Astro.props;
+
+type ColorDef = { brick: string; light: string; dark: string };
+
+const colorMap: Record<LegoColor, ColorDef> = {
+  red:    { brick: '#ED1B24', light: '#E83B28', dark: '#880D04' },
+  yellow: { brick: '#FFD95E', light: '#FFE060', dark: '#BF9E00' },
+  blue:   { brick: '#006FB9', light: '#1A86D4', dark: '#004278' },
+  white:  { brick: '#FDEFE2', light: '#EEEEEE', dark: '#9A9A9A' },
+};
+
+const c = colorMap[color];
+---
+
+<div
+  class="relative shrink-0"
+  style={`
+    --light: ${c.light};
+    width: calc(var(--unit) * ${width});
+    // background-image: linear-gradient(to bottom, transparent 15.8%, ${c.light} 15.8%, ${c.light} 26%, ${c.brick} 26%, ${c.brick} 83%, ${c.dark} 83%);
+    background: ${c.brick};
+    // box-shadow: inset -2px 0 0 #020303;
+  `}
+/>
+
+<style>
+  /* Studs: pseudo-elements can't receive Tailwind classes directly */
+  div::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 15.8%;
+    /* background-image: linear-gradient(
+      to right,
+      transparent  20%,
+      var(--light)  20%,
+      var(--light)  80%,
+      transparent  80%
+    ); */
+    background-size: var(--unit) 100%;
+    background-repeat: repeat-x;
+  }
+</style>
