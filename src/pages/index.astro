@@ -1,41 +1,95 @@
 ---
+import Project from '../components/Project.astro';
 import Layout from '../layouts/Layout.astro';
-import Terminal from '../layouts/Terminal.astro';
 ---
 
 <Layout>
-	<Terminal>
-		
-		<div class="flex flex-col gap-0">
-			<p class="text-white">> Engineer with a passion for design and user experience.<br/>Currently based in Berlin.</p>
-		</div>
-		
-		<div class="flex flex-col gap-2">
-			<div class="flex flex-col gap-0">
-				<p>> Fullstack engineer at <a class="text-rose-400 hover:underline underline-offset-2" href="https://tesla.com" target="_blank">Tesla</a> since 2022</p>
-				<p class="ml-4 text-white/30">Built an internal team and many apps from scratch. Responsible for development, UX, product strategy and communication.</p>
+	<div class="w-full max-w-4xl mx-auto py-8 md:py-28 px-8 md:px-32 flex flex-col gap-16 md:gap-24">
+
+		<div class="flex flex-col gap-10">
+
+			<div class="flex flex-row items-center justify-between">
+				<div class="flex flex-row items-center gap-5">
+					<img src="/profile.jpg" class="size-14 rounded-3xl"/>
+					<h1 class="font-medium text-lg">Joshua Knauber</h1>
+				</div>
 			</div>
-			<div class="flex flex-col gap-0">
-				<p>> Bachelor in Interaction Design from <a class="text-rose-400 hover:underline underline-offset-2" href="https://www.code.berlin" target="_blank">CODE University</a></p>
-				<p class="ml-4 text-white/30"></p>
+
+			<div class="flex flex-col gap-4">
+				<p class="text-white/80 motion-preset-blur-down-lg motion-delay-100">Hey, I'm Joshua. I am a <b class="text-white">Product Engineer</b> currently working at <b class="text-white">Tesla</b>.</p>
+				<div class="contact-links flex flex-row flex-wrap motion-preset-blur-down-md motion-delay-200">
+					<a id="contact-1" href="https://github.com/joshuaKnauber/" target="_blank" rel="noreferrer noopener" class="contact-link bg-neutral-900 flex justify-center w-16 md:w-12 py-3 md:py-2">
+						<i class="ph ph-github-logo text-md"/>
+					</a>
+					<a id="contact-2" href="https://www.linkedin.com/in/joshua-knauber-410b31221/" target="_blank" rel="noreferrer noopener" class="contact-link bg-neutral-900 flex justify-center w-16 md:w-12 py-3 md:py-2">
+						<i class="ph ph-linkedin-logo text-md"/>
+					</a>
+					<a id="contact-3" href="https://twitter.com/joshuaKnauber" target="_blank" rel="noreferrer noopener" class="contact-link bg-neutral-900 flex justify-center w-16 md:w-12 py-3 md:py-2">
+						<i class="ph ph-x-logo text-md"/>
+					</a>
+					<button id="contact-4" onclick="handleEmailClick()" class="contact-link bg-neutral-900 flex justify-center w-16 md:w-12 py-3 md:py-2">
+						<i class="ph ph-envelope-simple text-md transition-all absolute"/>
+						<i class="ph ph-check text-md transition-all absolute scale-0"/>
+					</button>
+				</div>
+			</div>
+			<div class="flex flex-col motion-preset-blur-down-lg motion-delay-300">
+				<p class="text-white/80">Throughout my past projects I developed a strong skill for problem solving, first-principles thinking and quick iteration.<br/>I love applying those principles to solving problems that make peoples lives meaningfully better.</p>
+			</div>
+
+		</div>
+
+		<div class="flex flex-col gap-4 motion-preset-blur-down-md motion-delay-500">
+			<div class="flex flex-col gap-2.5">
+				<div class="flex flex-row items-start gap-4">
+					<div class="flex flex-col items-center self-stretch gap-4">
+						<div class="size-3.5 bg-white rounded-full shrink-0 mt-[5px]"/>
+						<div class="w-0.5 rounded-full h-full bg-white/15"/>
+					</div>
+					<div class="flex flex-col gap-2">
+						<p class="font-bold md:inline-block flex flex-col items-start">Fullstack Software Engineer - Tesla<span class="opacity-80 font-normal md:pl-4 inline-block">2022 - Now</span></p>
+						<p class="text-sm opacity-40">Founding member of a global internal software team, built from the ground up. Helped shape team and technology decisions throughout.</p>
+						<p class="text-sm opacity-40">Contributed to internal software for web analytics, skill tracking and various other projects as a lead developer and core team member, both on design and development.</p>
+						<p class="text-sm opacity-40">Drove various projects around LLMs, including data-viz agents and custom AI web builders.</p>
+					</div>
+				</div>
+				<div class="flex flex-row items-start gap-4">
+					<div class="size-3.5 ring-2 ring-inset ring-white rounded-full shrink-0 mt-[5px]"/>
+					<div class="flex flex-col gap-2">
+						<p class="font-bold md:inline-block flex flex-col items-start">Bachelor of Arts - CODE University<span class="opacity-80 font-normal md:pl-4 inline-block">2020 - 2024</span></p>
+						<p class="text-sm opacity-40">Studied Interaction Design in a multidisciplinary environment</p>
+					</div>
+				</div>
 			</div>
 		</div>
 
-		<div class="flex flex-col gap-1">
-			<p class="text-white/30">Projects</p>
-			<div>
-				<p><span class="text-violet-400">┗ </span><a href="https://superhivemarket.com/products/serpens?search_id=44774722" target="_blank" class="text-white hover:underline underline-offset-2">Blender Scripting Nodes</a> <a href="https://github.com/joshuaKnauber/scripting_nodes/tree/blender_5" target="_blank" class="text-white hover:underline underline-offset-2">(GitHub)</a></p>
+		<div class="flex flex-col gap-6 motion-preset-blur-down-md motion-delay-700">
+			<h5 class="text-sm text-white/50 font-bold md:hidden">Projects</h5>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8">
+				<Project title="Flare" icon="ph-meteor" description="Visual CSS editor for in-browser workflows, built for AI coding agents" url="https://tryflare.dev" page="Website" />
+				<Project title="Serpens" icon="ph-cube" description="Node-based scripting addon for Blender, letting artists write code visually" url="https://github.com/joshuaKnauber/scripting_nodes" page="GitHub" />
+				<Project title="Nudge Prompts" icon="ph-wind" description="Typescript library with a generative CLI for building prompts in code" url="https://nudge-ai.dev" page="Website" />
+				<Project title="Breadcrumb" icon="ph-bread" description="Simple, open-source LLM tracing application to visualize AI decision-making" url="https://github.com/joshuaKnauber/breadcrumb" page="GitHub" />
 			</div>
 		</div>
 
-		<div class="flex flex-col gap-1">
-			<p class="text-white/30">Contact</p>
-			<div>
-				<p><span class="text-violet-400">┣ </span><a href="https://x.com/joshuaknauber" target="_blank" class="text-white hover:underline underline-offset-2">X</a></p>
-				<p><span class="text-violet-400">┣ </span><a href="https://github.com/joshuaknauber" target="_blank" class="text-white hover:underline underline-offset-2">GitHub</a></p>
-				<p><span class="text-violet-400">┗ </span><a href="https://www.linkedin.com/in/joshua-knauber-410b31221/" target="_blank" class="text-white hover:underline underline-offset-2">LinkedIn</a></p>
-			</div>
-		</div>
-
-	</Terminal>
+	</div>
 </Layout>
+<script>
+	const button = document.getElementById('contact-4');
+
+	function handleEmailClick() {
+		const email = 'joshuaknauber@example.com';
+		navigator.clipboard.writeText(email).then(() => {
+			button?.setAttribute('data-copied', 'true');
+			setTimeout(() => {
+				button?.removeAttribute('data-copied');
+			}, 2000);
+		}).catch(err => {
+			alert('Failed to copy email address');
+			console.error('Error copying email:', err);
+		});
+	}
+
+	button?.addEventListener('click', handleEmailClick);
+</script>
